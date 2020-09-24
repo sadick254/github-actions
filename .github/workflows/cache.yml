@@ -24,4 +24,4 @@ jobs:
         if: steps.cache-script.outputs.cache-hit != 'true'
         run: npm i
       - name: Print anther
-        run: node index.js
+        run: node index.js --version
