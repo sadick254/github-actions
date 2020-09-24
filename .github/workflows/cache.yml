@@ -2,6 +2,9 @@ name: Testing Cache
 on: [push]
 jobs:
   Lint:
+    defaults:
+      run:
+        working-directory: script
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -19,8 +22,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: Install node modules
         if: steps.cache-script.outputs.cache-hit != 'true'
-        run: |
-          cd script
-          npm i
+        run: npm i
       - name: Print Version
         run: node script/index.js --version
