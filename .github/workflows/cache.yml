@@ -24,3 +24,5 @@ jobs:
           npm i
       - name: Print Version
         run: script/lint --version
+      - name: Print anther
+        run: node script/index.js
