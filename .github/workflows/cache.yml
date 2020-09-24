@@ -1,0 +1,24 @@
+name: Testing Cache
+on: [push]
+jobs:
+  Lint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12.16.3
+      - id: cache-script
+        uses: actions/cache@v2
+        env:
+          cache-name: script-cache
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashfiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+      - name: Install node modules
+        if: steps.cache-script.outputs.cache-hit != 'true'
+        run: npm i
+      - name: Print Version
+        run: node src/index.js --version
