@@ -1,3 +1,4 @@
+require('colors')
 const yargs = require('yargs')
 
 const options = yargs(process.argv)

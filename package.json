@@ -16,5 +16,7 @@
     "url": "https://github.com/sadick254/github-actions/issues"
   },
   "homepage": "https://github.com/sadick254/github-actions#readme",
-  "dependencies": {}
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
 }
