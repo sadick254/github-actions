@@ -14,7 +14,7 @@ jobs:
       - id: cache-script
         uses: actions/cache@v2
         env:
-          cache-name: script-cache
+          cache-name: lint-cache
         with:
           path: ~/.npm
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashfiles('package-lock.json') }}
