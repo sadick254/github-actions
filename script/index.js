@@ -1,0 +1,7 @@
+const yargs = require('yargs')
+
+const options = yargs(process.argv)
+
+options.alias('v', 'version').version('2')
+
+console.log(options.argv)
