@@ -3,6 +3,9 @@ on: [push]
 jobs:
   Lint:
     runs-on: ubuntu-18.04
+    defaults:
+      run:
+        working-directory: script
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -19,10 +22,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: Install node modules
         if: steps.cache-script.outputs.cache-hit != 'true'
-        run: |
-          cd script
-          npm i
-      #- name: Print Version
-      #  run: script/lint --version
+        run: npm i
       - name: Print anther
-        run: node script/index.js
+        run: node index.js
